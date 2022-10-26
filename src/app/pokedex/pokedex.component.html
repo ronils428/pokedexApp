@@ -1,0 +1,25 @@
+<div class="container">
+
+    <!-- *ngFor="let pokemon of pokemons; #last = last" [ready]="last ? false : true" -->
+
+    <mat-card *ngFor="let pokemon of pokemons" class="container-card" 
+    [ngClass]="pokemon.types[1] ? pokemon.types[0].type.name + '-' + pokemon.types[1].type.name : pokemon.types[0].type.name">
+        <div class="card-header">
+            <img src="{{pokemon.sprites.front_default}}">
+            <div class="vertical-container">
+                <p class="card-id">{{addPadding(pokemon.id)}}</p>
+                <h1 class="card-title">&nbsp;{{convertUpperCase(pokemon.species.name)}}&nbsp;</h1>
+            </div>
+            
+            <img class="img-flip" src="{{pokemon.sprites.front_shiny}}">
+        </div>
+        
+
+        <mat-card-content>
+            <div class="card-content">
+                <p class="card-types" *ngFor="let type of pokemon.types">{{convertUpperCase(type.type.name)}}</p>
+            </div>
+        </mat-card-content>
+    </mat-card>
+  
+  </div>
